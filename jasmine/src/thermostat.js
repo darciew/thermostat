@@ -22,6 +22,10 @@ Thermostat.prototype.turnPowerSavingModeOff = function () {
   this.powerSavingMode = false;
 };
 
+Thermostat.prototype.turnPowerSavingModeOn = function () {
+  this.powerSavingMode = true;
+};
+
 Thermostat.prototype.up = function() {
   return this.temperature += 1;
 };

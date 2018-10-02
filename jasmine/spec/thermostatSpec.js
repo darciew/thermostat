@@ -48,6 +48,12 @@ describe ('Thermostat', function() {
       expect(thermostat.isPowerSavingModeon()).toBe(false);
     });
 
+    it('can turn power saving mode back on', function() {
+      thermostat.turnPowerSavingModeOff();
+      thermostat.turnPowerSavingModeOn();
+      expect(thermostat.isPowerSavingModeon()).toBe(true);
+    });
+
   });
 
 });
