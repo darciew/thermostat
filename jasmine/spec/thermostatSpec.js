@@ -37,7 +37,7 @@ describe ('Thermostat', function() {
 
     it('resets the temperature to 20 degrees', function() {
       thermostat.down();
-      thermostat.resets();
+      thermostat.resetTemp();
       expect(thermostat.getCurrentTemperature()).toEqual(20);
     });
 
@@ -73,7 +73,7 @@ describe ('Thermostat', function() {
 
     describe ('When power saving mode is off', function() {
 
-      it('has a max temperature of 32 degrees', function () {
+      it('has a max temperature of 32 degrees', function() {
         thermostat.turnPowerSavingModeOff();
         for (var i = 0; i < 13; i++) {
           thermostat.up();
@@ -81,6 +81,29 @@ describe ('Thermostat', function() {
         expect(thermostat.getCurrentTemperature()).toEqual(32);
       });
 
+    });
+
+  });
+
+  describe ('Shows current energy usage', function() {
+
+    it('displays low energy usage when temp is below 18 degrees', function() {
+      for (var i = 0; i < 4; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.getCurrentEnergyUsage()).toEqual("Low");
+    });
+
+    it('displays medium energy usage when temp is between 18 and 25 degrees', function() {
+      expect(thermostat.getCurrentEnergyUsage()).toEqual("Medium");
+    });
+
+    it('displays high energy usage when temp is anything above 25 degrees', function() {
+      thermostat.turnPowerSavingModeOff();
+      for (var i = 0; i < 10; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.getCurrentEnergyUsage()).toEqual("High");
     });
 
   });
