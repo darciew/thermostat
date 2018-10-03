@@ -48,3 +48,7 @@ Thermostat.prototype.down = function() {
   }
   this.temperature -= 1;
 };
+
+Thermostat.prototype.resets = function () {
+  this.temperature = 20;
+};

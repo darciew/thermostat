@@ -35,9 +35,11 @@ describe ('Thermostat', function() {
       expect(thermostat.getCurrentTemperature()).toEqual(19);
     });
 
-    // it('resets the temperature to 20 degrees', function() {
-    //   thermostat.reset();
-    // });
+    it('resets the temperature to 20 degrees', function() {
+      thermostat.down();
+      thermostat.resets();
+      expect(thermostat.getCurrentTemperature()).toEqual(20);
+    });
 
   });
 
